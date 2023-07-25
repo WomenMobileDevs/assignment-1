@@ -6,7 +6,7 @@ import PokeMonCard from './PokeMonCard'
 const DisplayPokemon = ({pokemon}) => {
   return (
     <View>
-      <FlatList data={pokemon} keyExtractor={({item}) => item} renderItem={({item}) => <PokeMonCard name={item.name} url={item.url} />} />
+      <FlatList data={pokemon} keyExtractor={(item) => {item.name}} renderItem={({item}) => <PokeMonCard name={item.name} url={item.url} />} />
     </View>
   )
 }

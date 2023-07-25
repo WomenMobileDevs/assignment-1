@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { api } from './module/index/api';
+import { fetchHook } from './module/index/utils/fetchHook';
+import DisplayPokemon from './module/index/components/DisplayPokemon';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () => {
+
+  const [pokemon,setPokemon] = useState([])
+
+  useEffect(() => {   
+    getPokemon()
+  },[])
+
+  const getPokemon = async() => {
+    const getRes = await fetchHook(api.FETCH_POKEMON)
+    setPokemon(getRes)
+  }
+
+  return(
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Pokemon🐻</Text>
+      <DisplayPokemon pokemon={pokemon} />
+
+    </SafeAreaView>
+  )
 }
+
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FBA1B7',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title:{
+    fontWeight:'bold',
+    fontSize:30,
+    marginTop:25
+  }
 });

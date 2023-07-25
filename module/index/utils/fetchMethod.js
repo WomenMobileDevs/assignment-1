@@ -1,5 +1,5 @@
 
-export const fetchHook = async(api) => {
+export const fetchMethod = async(api) => {
     try{
         const getPokemon = await fetch(api)
         if(getPokemon.status != 200){

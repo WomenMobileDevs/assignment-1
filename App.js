@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { api } from './module/index/api';
-import { fetchHook } from './module/index/utils/fetchHook';
+import { fetchMethod } from './module/index/utils/fetchMethod';
 import DisplayPokemon from './module/index/components/DisplayPokemon';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
   },[])
 
   const getPokemon = async() => {
-    const getRes = await fetchHook(api.FETCH_POKEMON)
+    const getRes = await fetchMethod(api.FETCH_POKEMON)
     setPokemon(getRes)
   }
 
